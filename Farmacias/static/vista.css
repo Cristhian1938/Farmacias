@@ -1,0 +1,14 @@
+/* Hace que el contenedor sea un flexbox */
+.container {
+  display: flex;
+}
+
+/* Centra el contenido horizontalmente */
+.container {
+  justify-content: center;
+}
+
+/* Centra el contenido verticalmente */
+.container {
+  align-items: center;
+}
