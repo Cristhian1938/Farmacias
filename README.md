@@ -1,2 +1,3 @@
-# Farmacias
-![image](https://github.com/user-attachments/assets/be2962b5-0110-473e-b34d-1312c2bb93a4)
+# Farmacias UML
+![image](https://github.com/user-attachments/assets/b76e8585-8fb6-44b8-b3fd-5561bb890024)
+
