@@ -1,0 +1,26 @@
+<!-- templates/inventario.html -->
+{% extends 'base.html' %}
+
+{% block title %}Inventario{% endblock %}
+
+{% block content %}
+<h2>Inventario</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Medicamento</th>
+            <th>Sucursal</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in inventario %}
+        <tr>
+            <td>{{ item.medicamento.nombre }}</td>
+            <td>{{ item.sucursal.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
