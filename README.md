@@ -1,3 +1,4 @@
 # Farmacias UML
-![image](https://github.com/user-attachments/assets/b76e8585-8fb6-44b8-b3fd-5561bb890024)
+![image](https://github.com/user-attachments/assets/640e3767-c2e5-4da9-8864-29a7ae8ca13f)
+
 
