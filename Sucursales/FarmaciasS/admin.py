@@ -30,7 +30,7 @@ class InventarioAdmin(admin.ModelAdmin):
 
 class PedidoInventarioInline(admin.TabularInline):
     model = PedidoInventario
-    extra = 1  # Filas adicionales para agregar medicamentos en un pedido
+    extra = 1
 
 @receiver(post_save, sender=PedidoInventario)
 def restar_inventario(sender, instance, **kwargs):
@@ -40,15 +40,14 @@ def restar_inventario(sender, instance, **kwargs):
 
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ('id','sucursal_pedido', 'sucursal_destino', 'estado', 'fecha_creacion', 'opcion_entrega')  # Cambiado de sucursal_origen a sucursal_pedido
+    list_display = ('id','sucursal_pedido', 'sucursal_destino', 'estado', 'fecha_creacion',)  # Cambiado de sucursal_origen a sucursal_pedido
     inlines = [PedidoInventarioInline]
 
 @admin.register(Entrega)
 class EntregaAdmin(admin.ModelAdmin):
-    list_display = ('cliente', 'medicamento', 'cantidad', 'sucursal_destino', 'fecha_entrega')
-    list_filter = ('fecha_entrega', 'sucursal_destino')
+    list_display = ('cliente', 'medicamento', 'cantidad')
     actions = ['realizar_entrega_desde_admin']
-    fields = ('cliente', 'medicamento', 'cantidad', 'sucursal_destino')  # Solo muestra estos campos
+    fields = ('cliente', 'medicamento', 'cantidad', 'opcion_entrega')  # Solo muestra estos campos
 
     def realizar_entrega_desde_admin(self, request, queryset):
         for entrega in queryset:
@@ -86,7 +85,6 @@ class EntregaAdmin(admin.ModelAdmin):
                 )
 
     realizar_entrega_desde_admin.short_description = "Realizar entrega para las entregas seleccionadas"
-
 
 
 
