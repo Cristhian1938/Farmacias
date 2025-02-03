@@ -43,11 +43,7 @@ class Pedido(models.Model):
         default='pendiente'
     )
     fecha_creacion = models.DateTimeField(auto_now_add=True)
-    opcion_entrega = models.CharField(
-        max_length=20,
-        choices=[('retiro', 'Retiro en sucursal'), ('envio', 'Envío a sucursal')],
-        default='retiro'
-    )
+
 
     def __str__(self):
         return f"Pedido {self.id} - {self.sucursal_pedido.nombre} a {self.sucursal_destino.nombre}"
@@ -65,8 +61,11 @@ class Entrega(models.Model):
     cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
     medicamento = models.ForeignKey('Medicamento', on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
-    sucursal_destino = models.ForeignKey('Sucursal', on_delete=models.CASCADE)
-    fecha_entrega = models.DateTimeField(auto_now_add=True)
+    opcion_entrega = models.CharField(
+        max_length=20,
+        choices=[('retiro', 'Retiro en sucursal'), ('envio', 'Envío a sucursal')],
+        default='retiro'
+    )
 
     def __str__(self):
         return f"Entrega de {self.medicamento.nombre} a {self.cliente.nombre}"
@@ -95,6 +94,5 @@ class Entrega(models.Model):
     class Meta:
         verbose_name = "Entrega"
         verbose_name_plural = "Entregas"
-
 
 
